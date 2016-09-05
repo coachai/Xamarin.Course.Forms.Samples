@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customrenderers="clr-namespace:CustomRendererExample;assembly=CustomRendererExample"
+
+             x:Class="CustomRendererExample.PageWithTime">
+  <StackLayout>
+    <Label Text="Normal TimePicker"/>
+    <TimePicker x:Name="normalTimePicker" VerticalOptions="StartAndExpand"/>
+
+    <Label Text="Extended TimePicker" VerticalOptions="EndAndExpand"/>
+    <customrenderers:ExtendedTimePicker x:Name="extendedTimePicker" VerticalOptions="End"/>
+  </StackLayout>
+</ContentPage>
