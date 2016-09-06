@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BackgroundImageExample"
+             x:Class="BackgroundImageExample.MainPage">
+  <!-- Padding for iPhone -->
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness">
+      <OnPlatform.iOS>
+        0, 20, 0, 0
+      </OnPlatform.iOS>
+    </OnPlatform>
+  </ContentPage.Padding>
+
+  <!-- Hack to get a background image as xamarin is pretty hopeless here-->
+  <RelativeLayout>
+    <Image x:Name="backgroundImage" Source="backgroundimage"
+           RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+           RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+    <!-- Now we have the image, but we cannot place the stacklayout on the relativelayout as it is
+    rubbery, but we can place a grid with one cell and have the stacklayout inside that -->
+    <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+          RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+      <StackLayout x:Name="myStackLayout" VerticalOptions="Center" HorizontalOptions="Center" >
+        <Label Text="I do not fear computers, I fear lack of them" TextColor="White" Font="Bold" HorizontalOptions="Center"/>
+        <Label Text="- Isac Asimov" TextColor="White" HorizontalOptions="Center"/>
+      </StackLayout>
+    </Grid>
+  </RelativeLayout>
+</ContentPage>
