@@ -28,9 +28,18 @@ namespace UsingValueConverters
 
         public MainPage()
         {
+
             InitializeComponent();
             BindingContext = this;
-            myLabel.SetBinding(Label.TextProperty, "MyAnnoyingInteger", BindingMode.OneWay);
+
+
+            //use for simple bindings with valueconverter
+            //myLabel.SetBinding(Label.TextProperty, "MyAnnoyingInteger", BindingMode.OneWay, myValueConverter);
+
+            //use if you need the converterparameter
+            string myConverterParameter = "3";
+            Binding myBinding = new Binding("MyAnnoyingInteger", BindingMode.OneWay, myValueConverter, myConverterParameter);
+            myLabel.SetBinding(Label.TextProperty, myBinding);
         }
     }
 }
