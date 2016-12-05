@@ -13,11 +13,20 @@ namespace NavigationPageExample
         {
             InitializeComponent();
 
-            var navPage = new NavigationPage();
+            var tabbedPage = new TabbedPage();
+            var firstNavigationPage = new NavigationPage();
+            var secondNavigationPage = new NavigationPage();
+
+            tabbedPage.Children.Add(firstNavigationPage);
+            tabbedPage.Children.Add(secondNavigationPage);
+
+            var page1 = new Page1();
+
+            /*var navPage = new NavigationPage();
             var page1 = new Page1();
             navPage.PushAsync(page1);
             MainPage = navPage;
-
+            /*
         }
 
         protected override void OnStart()
