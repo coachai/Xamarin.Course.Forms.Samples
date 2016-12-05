@@ -17,7 +17,10 @@ namespace NavigationPageExample
 
         private async void PushPage2(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Page2());
+            var page2 = new Page2();
+            await Navigation.PushAsync(page2);
+            //we could as well write like this
+            //await Navigation.PushAsync(new Page2());
         }
     }
 }

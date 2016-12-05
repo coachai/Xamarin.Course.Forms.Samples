@@ -15,9 +15,20 @@ namespace NavigationPageExample
             InitializeComponent();
         }
 
-        private async void PushPage2(object sender, EventArgs e)
+        private async void PopPage2(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        private async void PushTabbedAB(object sender, EventArgs e)
+        {
+            var tabbedPage = new TabbedPage();
+            var pageA = new PageA();
+            var pageB = new PageB();
+            tabbedPage.Children.Add(pageA);
+            tabbedPage.Children.Add(pageB);
+
+            await Navigation.PushAsync(tabbedPage);
         }
     }
 }

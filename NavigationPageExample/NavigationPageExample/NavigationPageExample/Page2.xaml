@@ -5,6 +5,7 @@
              Title="I am page2">
   <StackLayout>
     <Label Text="Page2"/>
-    <Button x:Name="button" Text="Page2" Clicked="PopPage2" />
+    <Button x:Name="button" Text="Page1" Clicked="PopPage2" />
+    <Button x:Name="button1" Text="TabbedPage(A+B)" Clicked="PushTabbedAB" />
   </StackLayout>
 </ContentPage>

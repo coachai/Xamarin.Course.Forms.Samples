@@ -14,9 +14,10 @@ namespace NavigationPageExample
             InitializeComponent();
 
             var navPage = new NavigationPage();
-
+            var page1 = new Page1();
+            navPage.PushAsync(page1);
             MainPage = navPage;
-            navPage.PushAsync(new Page1());
+
         }
 
         protected override void OnStart()
