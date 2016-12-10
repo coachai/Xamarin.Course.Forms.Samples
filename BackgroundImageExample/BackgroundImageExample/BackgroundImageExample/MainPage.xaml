@@ -17,7 +17,7 @@
     <Image x:Name="backgroundImage" Source="backgroundimage"
            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
-           Aspect="AspectFill"/>
+           Aspect="Fill"/>
 
     <!-- Now we have the image, but we cannot place the stacklayout on the relativelayout as it is
     rubbery, but we can place a grid with one cell and have the stacklayout inside that -->
