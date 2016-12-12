@@ -11,7 +11,10 @@ namespace WeatherApp
     {
         public App()
         {
-            MainPage = new MyWeatherPage();
+            var dataService = new DataService();
+            var model = new Model(dataService);
+            var viewModel = new ViewModel(model);
+            MainPage = new MyWeatherPage(viewModel);
         }
 
         protected override void OnStart()

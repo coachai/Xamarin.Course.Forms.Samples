@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.MyWeatherPage"
+             BackgroundImage="background">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="LayoutBackgroundColor">#10FFFFFF</Color>
+      <Color x:Key="LightTextColor">#FFFFFF</Color>
+      <Color x:Key="DarkTextColor">#000000</Color>
+      <Color x:Key="TemperatureBoxColor">#71FFFF</Color>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  
+  <RelativeLayout x:Name="outerRelativeLayout">
+    <!-- Top Layout -->
+    <StackLayout x:Name="topLayout" Orientation="Vertical" BackgroundColor="{StaticResource LayoutBackgroundColor}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.2,Constant=0}" >
+      <Label x:Name="locationLabel" Text="{Binding Place}" Font="40" TextColor="{StaticResource LightTextColor}" VerticalOptions="CenterAndExpand"/>
+      <Label x:Name="heightLabel" Text="{Binding Altitude, StringFormat='{0} m'}" TextColor="{StaticResource LightTextColor}" VerticalOptions="CenterAndExpand"/>
+      <Label x:Name="dateTimeLabel" Text="{Binding DateString}" Font="20" TextColor="{StaticResource LightTextColor}" VerticalOptions="CenterAndExpand"/>
+    </StackLayout>
+
+    <!-- Center Layout-->
+    <Grid x:Name="centerLayout" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=topLayout,Property=Height,Factor=1,Constant=5}"
+          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+          RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.8,Constant=0}">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="2.7*"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width ="*"/>
+        <ColumnDefinition Width ="*"/>
+        <ColumnDefinition Width ="*"/>
+        <ColumnDefinition Width ="*"/>
+        <ColumnDefinition Width ="*"/>
+        <ColumnDefinition Width ="*"/>
+        <ColumnDefinition Width ="*"/>
+        <ColumnDefinition Width ="*"/>
+        <ColumnDefinition Width ="*"/>
+        <ColumnDefinition Width ="*"/>
+        <ColumnDefinition Width ="*"/>
+        <ColumnDefinition Width ="*"/>
+      </Grid.ColumnDefinitions>
+      <!--1st Center Column Layout-->
+      <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource LayoutBackgroundColor}" Padding="0,10,0,10">
+        <Label Text="{Binding TimeString}" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand"/>
+        <Image Source="sun" VerticalOptions="FillAndExpand"/>
+        <Label Text="{Binding Humidity, StringFormat='{0}%'}" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand"/>
+        <AbsoluteLayout VerticalOptions="FillAndExpand">
+          <BoxView Color="{StaticResource TemperatureBoxColor}"
+                   AbsoluteLayout.LayoutBounds=".5,0,40,40"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"/>
+          <Label Text="{Binding TemperatureCelcius, StringFormat='{0}C'}" TextColor="{StaticResource DarkTextColor}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   AbsoluteLayout.LayoutBounds=".5,.5,1,1"
+                   AbsoluteLayout.LayoutFlags="All"/>                 
+        </AbsoluteLayout>
+
+        <AbsoluteLayout VerticalOptions="FillAndExpand">
+          <Image Source="direction"
+                 Rotation="{Binding WindDirection}"
+                   AbsoluteLayout.LayoutBounds=".5,0,40,40"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"/>
+        </AbsoluteLayout>
+
+        <StackLayout VerticalOptions="FillAndExpand">
+          <Label Text ="UV" HorizontalTextAlignment="Center"/>
+          <AbsoluteLayout>
+            <BoxView Color="{StaticResource TemperatureBoxColor}" Rotation="45"
+                     AbsoluteLayout.LayoutBounds=".5,0,30,30"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            <Label Text="16" TextColor="{StaticResource DarkTextColor}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                     AbsoluteLayout.LayoutBounds=".5,.5,1,1"
+                     AbsoluteLayout.LayoutFlags="All"/>
+          </AbsoluteLayout>
+        </StackLayout>
+
+      </StackLayout>
+      <!--2nd Center Column Layout-->
+      <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" BackgroundColor="{StaticResource LayoutBackgroundColor}">
+      </StackLayout>
+      <!--3rd Center Column Layout-->
+      <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" BackgroundColor="{StaticResource LayoutBackgroundColor}">
+      </StackLayout>
+      <!--4th Center Column Layout-->
+      <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" BackgroundColor="{StaticResource LayoutBackgroundColor}">
+      </StackLayout>
+
+      <!--1st Bottom Column Layout-->
+      <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="{StaticResource LayoutBackgroundColor}">
+      </StackLayout>
+      <!--2nd Bottom Column Layout-->
+      <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="4" BackgroundColor="{StaticResource LayoutBackgroundColor}">
+      </StackLayout>
+      <!--3rd Bottom Column Layout-->
+      <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="4" BackgroundColor="{StaticResource LayoutBackgroundColor}">
+      </StackLayout>
+    </Grid>
+
+
+    <BoxView x:Name="hackBoxView" Color="Transparent"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+      <BoxView.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTapped"/>
+      </BoxView.GestureRecognizers>
+    </BoxView>
+   </RelativeLayout>
+</ContentPage>
